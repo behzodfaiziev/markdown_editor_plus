@@ -259,24 +259,27 @@ class _MarkdownAutoPreviewState extends State<MarkdownAutoPreview> {
       focusNode: _internalFocus,
       child: _focused
           ? _editorOnFocused()
-          : GestureDetector(
-              onTap: () {
-                // Bring widget in widget tree first
-                setState(() {
-                  _focused = true;
-                });
+          : SizedBox(
+              width: MediaQuery.of(context).size.width,
+              child: GestureDetector(
+              behavior: HitTestBehavior.translucent,
+                onTap: () {
+                  // Bring widget in widget tree first
+                  setState(() {
+                    _focused = true;
+                  });
 
-                // Then request for focus when widget is built
-                _textFieldFocusNode.requestFocus();
-              },
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                alignment: Alignment.centerLeft,
-                child: MarkdownBody(
-                  key: const ValueKey<String>("zmarkdown-parse-body"),
-                  data: _internalController.text == ""
-                      ? widget.hintText ?? "_Markdown text_"
-                      : _internalController.text,
+                  // Then request for focus when widget is built
+                  _textFieldFocusNode.requestFocus();
+                },
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: MarkdownBody(
+                    key: const ValueKey<String>("zmarkdown-parse-body"),
+                    data: _internalController.text == ""
+                        ? widget.hintText ?? "_Markdown text_"
+                        : _internalController.text,
+                  ),
                 ),
               ),
             ),
