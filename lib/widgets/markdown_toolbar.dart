@@ -141,25 +141,25 @@ class MarkdownToolbar extends StatelessWidget {
                 onActionCompleted?.call();
               },
             ),
-            ToolbarItem(
-              key: const ValueKey<String>("h4"),
-              icon: "H4",
-              tooltip: 'Insert Heading 4',
-              onPressedButton: () {
-                toolbar.action("#### ", "");
-                onActionCompleted?.call();
-              },
-            ),
-            // unOrdered list
-            ToolbarItem(
-              key: const ValueKey<String>("toolbar_unorder_list_action"),
-              icon: FontAwesomeIcons.listUl,
-              tooltip: 'Unordered list',
-              onPressedButton: () {
-                toolbar.action("* ", "");
-                onActionCompleted?.call();
-              },
-            ),
+            // ToolbarItem(
+            //   key: const ValueKey<String>("h4"),
+            //   icon: "H4",
+            //   tooltip: 'Insert Heading 4',
+            //   onPressedButton: () {
+            //     toolbar.action("#### ", "");
+            //     onActionCompleted?.call();
+            //   },
+            // ),
+            // // unOrdered list
+            // ToolbarItem(
+            //   key: const ValueKey<String>("toolbar_unorder_list_action"),
+            //   icon: FontAwesomeIcons.listUl,
+            //   tooltip: 'Unordered list',
+            //   onPressedButton: () {
+            //     toolbar.action("* ", "");
+            //     onActionCompleted?.call();
+            //   },
+            // ),
             // checkbox list
             // ToolbarItem(
             //   key: const ValueKey<String>("toolbar_checkbox_list_action"),
