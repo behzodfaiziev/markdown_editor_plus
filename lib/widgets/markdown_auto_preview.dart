@@ -12,6 +12,8 @@ class MarkdownAutoPreview extends StatefulWidget {
     super.key,
     this.controller,
     this.focusNode,
+    this.fieldHeight,
+    this.focusScopeNode,
     this.markDownStyleSheet,
     this.scrollController,
     this.onChanged,
@@ -64,7 +66,11 @@ class MarkdownAutoPreview extends StatefulWidget {
   /// Controls whether this widget has keyboard focus.
   final FocusNode? focusNode;
 
+  final FocusScopeNode? focusScopeNode;
+
   final ScrollController? scrollController;
+
+  final double? fieldHeight;
 
   /// Configures how the platform keyboard will select an uppercase or lowercase keyboard.
   ///
@@ -196,9 +202,10 @@ class _MarkdownAutoPreviewState extends State<MarkdownAutoPreview> {
   // Internal parameter
   late TextEditingController _internalController;
 
-  final FocusScopeNode _internalFocus =
-      FocusScopeNode(debugLabel: '_internalFocus');
-  late final FocusNode _textFieldFocusNode;
+  late final FocusScopeNode _internalFocus =
+      widget.focusScopeNode ?? FocusScopeNode(debugLabel: '_internalFocus');
+  late final FocusNode _textFieldFocusNode =
+      widget.focusNode ?? FocusNode(debugLabel: '_textFieldFocusNode');
 
   late Toolbar _toolbar;
 
@@ -207,9 +214,6 @@ class _MarkdownAutoPreviewState extends State<MarkdownAutoPreview> {
   @override
   void initState() {
     _internalController = widget.controller ?? TextEditingController();
-
-    _textFieldFocusNode =
-        widget.focusNode ?? FocusNode(debugLabel: '_textFieldFocusNode');
 
     _toolbar = Toolbar(
       controller: _internalController,
@@ -270,6 +274,7 @@ class _MarkdownAutoPreviewState extends State<MarkdownAutoPreview> {
           ? _editorOnFocused()
           : SizedBox(
               width: MediaQuery.of(context).size.width,
+              height: widget.fieldHeight,
               child: GestureDetector(
                 behavior: HitTestBehavior.translucent,
                 onTap: () {
@@ -284,7 +289,6 @@ class _MarkdownAutoPreviewState extends State<MarkdownAutoPreview> {
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: MarkdownBody(
-
                     key: const ValueKey<String>("zmarkdown-parse-body"),
                     data: _internalController.text == ""
                         ? widget.hintText ?? "_Markdown text_"
