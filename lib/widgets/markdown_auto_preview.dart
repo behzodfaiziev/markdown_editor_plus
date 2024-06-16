@@ -269,7 +269,8 @@ class _MarkdownAutoPreviewState extends State<MarkdownAutoPreview> {
                 // Then request for focus when widget is built
                 _textFieldFocusNode.requestFocus();
               },
-              child: Align(
+              child: Container(
+                width: MediaQuery.of(context).size.width,
                 alignment: Alignment.centerLeft,
                 child: MarkdownBody(
                   key: const ValueKey<String>("zmarkdown-parse-body"),
