@@ -134,7 +134,7 @@ class MarkdownToolbar extends StatelessWidget {
                   key: const ValueKey<String>("h1"),
                   icon: "H1",
                   tooltip: 'Insert Heading 1',
-                  expandableBackground: expandableBackground,
+                  expandableBackground: Colors.blue,
                   onPressedButton: () {
                     toolbar.action("# ", "");
                     onActionCompleted?.call();
@@ -144,7 +144,7 @@ class MarkdownToolbar extends StatelessWidget {
                   key: const ValueKey<String>("h2"),
                   icon: "H2",
                   tooltip: 'Insert Heading 2',
-                  expandableBackground: expandableBackground,
+                  expandableBackground: Colors.red,
                   onPressedButton: () {
                     toolbar.action("## ", "");
                     onActionCompleted?.call();
@@ -154,7 +154,7 @@ class MarkdownToolbar extends StatelessWidget {
                   key: const ValueKey<String>("h3"),
                   icon: "H3",
                   tooltip: 'Insert Heading 3',
-                  expandableBackground: expandableBackground,
+                  expandableBackground: Colors.orange,
                   onPressedButton: () {
                     toolbar.action("### ", "");
                     onActionCompleted?.call();
