@@ -263,7 +263,7 @@ class _MarkdownAutoPreviewState extends State<MarkdownAutoPreview> {
           _focused = focus;
         });
 
-        if (_focused) _internalFocus.requestFocus(_textFieldFocusNode);
+       _internalFocus.requestFocus(_textFieldFocusNode);
       },
       // canRequestFocus: false,
       focusNode: _internalFocus,
