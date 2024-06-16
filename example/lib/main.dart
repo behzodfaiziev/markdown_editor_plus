@@ -31,10 +31,12 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: const Text("Home Screen"),
       ),
-      body: const Column(
+      body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           MarkdownAutoPreview(
+            focusNode: FocusNode(),
+            focusScopeNode: FocusScopeNode(),
             decoration: InputDecoration(
               hintText: 'Markdown Auto Preview',
             ),
