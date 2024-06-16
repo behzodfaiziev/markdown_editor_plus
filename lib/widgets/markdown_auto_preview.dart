@@ -11,9 +11,9 @@ class MarkdownAutoPreview extends StatefulWidget {
   const MarkdownAutoPreview({
     super.key,
     this.controller,
-    this.focusNode,
+    required this.focusNode,
     this.fieldHeight,
-    this.focusScopeNode,
+    required this.focusScopeNode,
     this.markDownStyleSheet,
     this.scrollController,
     this.onChanged,
@@ -64,9 +64,9 @@ class MarkdownAutoPreview extends StatefulWidget {
   final TextEditingController? controller;
 
   /// Controls whether this widget has keyboard focus.
-  final FocusNode? focusNode;
+  final FocusNode focusNode;
 
-  final FocusScopeNode? focusScopeNode;
+  final FocusScopeNode focusScopeNode;
 
   final ScrollController? scrollController;
 
@@ -200,12 +200,11 @@ class MarkdownAutoPreview extends StatefulWidget {
 
 class _MarkdownAutoPreviewState extends State<MarkdownAutoPreview> {
   // Internal parameter
-  late TextEditingController _internalController;
+  late final TextEditingController _internalController =
+      widget.controller ?? TextEditingController();
 
-  late final FocusScopeNode _internalFocus =
-      widget.focusScopeNode ?? FocusScopeNode(debugLabel: '_internalFocus');
-  late final FocusNode _textFieldFocusNode =
-      widget.focusNode ?? FocusNode(debugLabel: '_textFieldFocusNode');
+  late final FocusScopeNode _internalFocus = widget.focusScopeNode;
+  late final FocusNode _textFieldFocusNode = widget.focusNode;
 
   late Toolbar _toolbar;
 
@@ -213,8 +212,6 @@ class _MarkdownAutoPreviewState extends State<MarkdownAutoPreview> {
 
   @override
   void initState() {
-    _internalController = widget.controller ?? TextEditingController();
-
     _toolbar = Toolbar(
       controller: _internalController,
       bringEditorToFocus: () {
@@ -343,6 +340,7 @@ class _MarkdownAutoPreviewState extends State<MarkdownAutoPreview> {
     return TextField(
       controller: _internalController,
       focusNode: _textFieldFocusNode,
+      autofocus: true,
       cursorColor: widget.cursorColor,
       inputFormatters: [
         if (widget.emojiConvert) EmojiInputFormatter(),
