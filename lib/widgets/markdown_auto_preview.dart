@@ -11,6 +11,7 @@ class MarkdownAutoPreview extends StatefulWidget {
   const MarkdownAutoPreview({
     super.key,
     this.controller,
+    this.focusNode,
     this.scrollController,
     this.onChanged,
     this.style,
@@ -56,6 +57,9 @@ class MarkdownAutoPreview extends StatefulWidget {
   ///
   /// If null, this widget will create its own [TextEditingController].
   final TextEditingController? controller;
+
+  /// Controls whether this widget has keyboard focus.
+  final FocusNode? focusNode;
 
   final ScrollController? scrollController;
 
@@ -191,8 +195,7 @@ class _MarkdownAutoPreviewState extends State<MarkdownAutoPreview> {
 
   final FocusScopeNode _internalFocus =
       FocusScopeNode(debugLabel: '_internalFocus');
-  final FocusNode _textFieldFocusNode =
-      FocusNode(debugLabel: '_textFieldFocusNode');
+  late final FocusNode _textFieldFocusNode;
 
   late Toolbar _toolbar;
 
@@ -201,6 +204,9 @@ class _MarkdownAutoPreviewState extends State<MarkdownAutoPreview> {
   @override
   void initState() {
     _internalController = widget.controller ?? TextEditingController();
+
+    _textFieldFocusNode =
+        widget.focusNode ?? FocusNode(debugLabel: '_textFieldFocusNode');
 
     _toolbar = Toolbar(
       controller: _internalController,
@@ -262,7 +268,7 @@ class _MarkdownAutoPreviewState extends State<MarkdownAutoPreview> {
           : SizedBox(
               width: MediaQuery.of(context).size.width,
               child: GestureDetector(
-              behavior: HitTestBehavior.translucent,
+                behavior: HitTestBehavior.translucent,
                 onTap: () {
                   // Bring widget in widget tree first
                   setState(() {
