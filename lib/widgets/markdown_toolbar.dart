@@ -128,7 +128,7 @@ class MarkdownToolbar extends StatelessWidget {
               icon: FontAwesomeIcons.heading,
               isExpandable: true,
               tooltip: 'Insert Heading',
-              expandableBackground: expandableBackground,
+              expandableBackground: Colors.green,
               items: [
                 ToolbarItem(
                   key: const ValueKey<String>("h1"),
