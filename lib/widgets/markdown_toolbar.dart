@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../src/toolbar.dart';
@@ -55,40 +56,42 @@ class MarkdownToolbar extends StatelessWidget {
                 tooltip: 'Show/Hide markdown preview',
               ),
 
-            // Clear the field
-            ToolbarItem(
-              key: const ValueKey<String>("toolbar_clear_action"),
-              icon: FontAwesomeIcons.trashCan,
-              onPressedButton: () {
-                controller.clear();
-                onActionCompleted?.call();
-              },
-              tooltip: 'Clear the text field',
-            ),
+            // // Clear the field
+            // ToolbarItem(
+            //   key: const ValueKey<String>("toolbar_clear_action"),
+            //   icon: FontAwesomeIcons.trashCan,
+            //   onPressedButton: () {
+            //     controller.clear();
+            //     onActionCompleted?.call();
+            //   },
+            //   tooltip: 'Clear the text field',
+            // ),
 
-            // Reset the text field
-            ToolbarItem(
-              key: const ValueKey<String>("toolbar_reset_action"),
-              icon: FontAwesomeIcons.arrowRotateLeft,
-              onPressedButton: () {
-                if (markdownSyntax != null) {
-                  controller.text = markdownSyntax!;
-                  onActionCompleted?.call();
-                }
-              },
-              tooltip: 'Reset the text field to specified format',
-            ),
+            // // Reset the text field
+            // ToolbarItem(
+            //   key: const ValueKey<String>("toolbar_reset_action"),
+            //   icon: FontAwesomeIcons.arrowRotateLeft,
+            //   onPressedButton: () {
+            //     if (markdownSyntax != null) {
+            //       controller.text = markdownSyntax!;
+            //       onActionCompleted?.call();
+            //     }
+            //   },
+            //   tooltip: 'Reset the text field to specified format',
+            // ),
+            //
+            //
+            // // select single line
+            // ToolbarItem(
+            //   key: const ValueKey<String>("toolbar_selection_action"),
+            //   icon: FontAwesomeIcons.textWidth,
+            //   onPressedButton: () {
+            //     toolbar.selectSingleLine.call();
+            //     onActionCompleted?.call();
+            //   },
+            //   tooltip: 'Select single line',
+            // ),
 
-            // select single line
-            ToolbarItem(
-              key: const ValueKey<String>("toolbar_selection_action"),
-              icon: FontAwesomeIcons.textWidth,
-              onPressedButton: () {
-                toolbar.selectSingleLine.call();
-                onActionCompleted?.call();
-              },
-              tooltip: 'Select single line',
-            ),
             // bold
             ToolbarItem(
               key: const ValueKey<String>("toolbar_bold_action"),
@@ -109,16 +112,16 @@ class MarkdownToolbar extends StatelessWidget {
                 onActionCompleted?.call();
               },
             ),
-            // strikethrough
-            ToolbarItem(
-              key: const ValueKey<String>("toolbar_strikethrough_action"),
-              icon: FontAwesomeIcons.strikethrough,
-              tooltip: 'Strikethrough',
-              onPressedButton: () {
-                toolbar.action("~~", "~~");
-                onActionCompleted?.call();
-              },
-            ),
+            // // strikethrough
+            // ToolbarItem(
+            //   key: const ValueKey<String>("toolbar_strikethrough_action"),
+            //   icon: FontAwesomeIcons.strikethrough,
+            //   tooltip: 'Strikethrough',
+            //   onPressedButton: () {
+            //     toolbar.action("~~", "~~");
+            //     onActionCompleted?.call();
+            //   },
+            // ),
             // heading
             ToolbarItem(
               key: const ValueKey<String>("toolbar_heading_action"),
@@ -131,6 +134,7 @@ class MarkdownToolbar extends StatelessWidget {
                   key: const ValueKey<String>("h1"),
                   icon: "H1",
                   tooltip: 'Insert Heading 1',
+                  expandableBackground: expandableBackground,
                   onPressedButton: () {
                     toolbar.action("# ", "");
                     onActionCompleted?.call();
@@ -140,6 +144,7 @@ class MarkdownToolbar extends StatelessWidget {
                   key: const ValueKey<String>("h2"),
                   icon: "H2",
                   tooltip: 'Insert Heading 2',
+                  expandableBackground: expandableBackground,
                   onPressedButton: () {
                     toolbar.action("## ", "");
                     onActionCompleted?.call();
@@ -149,6 +154,7 @@ class MarkdownToolbar extends StatelessWidget {
                   key: const ValueKey<String>("h3"),
                   icon: "H3",
                   tooltip: 'Insert Heading 3',
+                  expandableBackground: expandableBackground,
                   onPressedButton: () {
                     toolbar.action("### ", "");
                     onActionCompleted?.call();
@@ -158,6 +164,7 @@ class MarkdownToolbar extends StatelessWidget {
                   key: const ValueKey<String>("h4"),
                   icon: "H4",
                   tooltip: 'Insert Heading 4',
+                  expandableBackground: expandableBackground,
                   onPressedButton: () {
                     toolbar.action("#### ", "");
                     onActionCompleted?.call();
@@ -177,77 +184,78 @@ class MarkdownToolbar extends StatelessWidget {
               },
             ),
             // checkbox list
-            ToolbarItem(
-              key: const ValueKey<String>("toolbar_checkbox_list_action"),
-              icon: FontAwesomeIcons.listCheck,
-              isExpandable: true,
-              expandableBackground: expandableBackground,
-              items: [
-                ToolbarItem(
-                  key: const ValueKey<String>("checkbox"),
-                  icon: FontAwesomeIcons.solidSquareCheck,
-                  tooltip: 'Checked checkbox',
-                  onPressedButton: () {
-                    toolbar.action("- [x] ", "");
-                    onActionCompleted?.call();
-                  },
-                ),
-                ToolbarItem(
-                  key: const ValueKey<String>("uncheckbox"),
-                  icon: FontAwesomeIcons.square,
-                  tooltip: 'Unchecked checkbox',
-                  onPressedButton: () {
-                    toolbar.action("- [ ] ", "");
-                    onActionCompleted?.call();
-                  },
-                )
-              ],
-            ),
+            // ToolbarItem(
+            //   key: const ValueKey<String>("toolbar_checkbox_list_action"),
+            //   icon: FontAwesomeIcons.listCheck,
+            //   isExpandable: true,
+            //   expandableBackground: expandableBackground,
+            //   items: [
+            //     ToolbarItem(
+            //       key: const ValueKey<String>("checkbox"),
+            //       icon: FontAwesomeIcons.solidSquareCheck,
+            //       tooltip: 'Checked checkbox',
+            //       expandableBackground: expandableBackground,
+            //       onPressedButton: () {
+            //         toolbar.action("- [x] ", "");
+            //         onActionCompleted?.call();
+            //       },
+            //     ),
+            //     ToolbarItem(
+            //       key: const ValueKey<String>("uncheckbox"),
+            //       icon: FontAwesomeIcons.square,
+            //       tooltip: 'Unchecked checkbox',
+            //       onPressedButton: () {
+            //         toolbar.action("- [ ] ", "");
+            //         onActionCompleted?.call();
+            //       },
+            //     )
+            //   ],
+            // ),
             // emoji
-            if (showEmojiSelection)
-              ToolbarItem(
-                key: const ValueKey<String>("toolbar_emoji_action"),
-                icon: FontAwesomeIcons.faceSmile,
-                tooltip: 'Select emoji',
-                onPressedButton: () async {
-                  await _showModalSelectEmoji(context, controller.selection);
-                },
-              ),
+            // if (showEmojiSelection)
+            //   ToolbarItem(
+            //     key: const ValueKey<String>("toolbar_emoji_action"),
+            //     icon: FontAwesomeIcons.faceSmile,
+            //     tooltip: 'Select emoji',
+            //     onPressedButton: () async {
+            //       await _showModalSelectEmoji(context, controller.selection);
+            //     },
+            //   ),
             // link
-            ToolbarItem(
-              key: const ValueKey<String>("toolbar_link_action"),
-              icon: FontAwesomeIcons.link,
-              tooltip: 'Add hyperlink',
-              onPressedButton: () async {
-                if (toolbar.hasSelection) {
-                  toolbar.action("[enter link description here](", ")");
-                } else {
-                  await _showModalInputUrl(context,
-                      "[enter link description here](", controller.selection);
-                }
-
-                onActionCompleted?.call();
-              },
-            ),
+            // ToolbarItem(
+            //   key: const ValueKey<String>("toolbar_link_action"),
+            //   icon: FontAwesomeIcons.link,
+            //   tooltip: 'Add hyperlink',
+            //   onPressedButton: () async {
+            //     if (toolbar.hasSelection) {
+            //       toolbar.action("[enter link description here](", ")");
+            //     } else {
+            //       await _showModalInputUrl(context,
+            //           "[enter link description here](", controller.selection);
+            //     }
+            //
+            //     onActionCompleted?.call();
+            //   },
+            // ),
             // image
-            ToolbarItem(
-              key: const ValueKey<String>("toolbar_image_action"),
-              icon: FontAwesomeIcons.image,
-              tooltip: 'Add image',
-              onPressedButton: () async {
-                if (toolbar.hasSelection) {
-                  toolbar.action("![enter image description here](", ")");
-                } else {
-                  await _showModalInputUrl(
-                    context,
-                    "![enter image description here](",
-                    controller.selection,
-                  );
-                }
-
-                onActionCompleted?.call();
-              },
-            ),
+            // ToolbarItem(
+            //   key: const ValueKey<String>("toolbar_image_action"),
+            //   icon: FontAwesomeIcons.image,
+            //   tooltip: 'Add image',
+            //   onPressedButton: () async {
+            //     if (toolbar.hasSelection) {
+            //       toolbar.action("![enter image description here](", ")");
+            //     } else {
+            //       await _showModalInputUrl(
+            //         context,
+            //         "![enter image description here](",
+            //         controller.selection,
+            //       );
+            //     }
+            //
+            //     onActionCompleted?.call();
+            //   },
+            // ),
             // blockquote
             ToolbarItem(
               key: const ValueKey<String>("toolbar_blockquote_action"),
@@ -258,16 +266,16 @@ class MarkdownToolbar extends StatelessWidget {
                 onActionCompleted?.call();
               },
             ),
-            // code
-            ToolbarItem(
-              key: const ValueKey<String>("toolbar_code_action"),
-              icon: FontAwesomeIcons.code,
-              tooltip: 'Code syntax/font',
-              onPressedButton: () {
-                toolbar.action("`", "`");
-                onActionCompleted?.call();
-              },
-            ),
+            // // code
+            // ToolbarItem(
+            //   key: const ValueKey<String>("toolbar_code_action"),
+            //   icon: FontAwesomeIcons.code,
+            //   tooltip: 'Code syntax/font',
+            //   onPressedButton: () {
+            //     toolbar.action("`", "`");
+            //     onActionCompleted?.call();
+            //   },
+            // ),
             // line
             ToolbarItem(
               key: const ValueKey<String>("toolbar_line_action"),
@@ -319,10 +327,10 @@ class MarkdownToolbar extends StatelessWidget {
 
   // show modal input
   Future<dynamic> _showModalInputUrl(
-    BuildContext context,
-    String leftText,
-    TextSelection selection,
-  ) {
+      BuildContext context,
+      String leftText,
+      TextSelection selection,
+      ) {
     return showModalBottomSheet(
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
