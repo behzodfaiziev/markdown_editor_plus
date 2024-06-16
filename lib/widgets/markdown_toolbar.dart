@@ -124,56 +124,33 @@ class MarkdownToolbar extends StatelessWidget {
             // ),
             // heading
             ToolbarItem(
-              key: const ValueKey<String>("toolbar_heading_action"),
-              icon: FontAwesomeIcons.heading,
-              isExpandable: true,
-              tooltip: 'Insert Heading',
-              expandableBackground: Colors.green,
-              items: [
-                ToolbarItem(
-                  key: const ValueKey<String>("h1"),
-                  icon: "H1",
-                  tooltip: 'Insert Heading 1',
-                  expandableBackground: Colors.blue,
-                  onPressedButton: () {
-                    toolbar.action("# ", "");
-                    onActionCompleted?.call();
-                  },
-                ),
-                ToolbarItem(
-                  key: const ValueKey<String>("h2"),
-                  icon: "H2",
-                  tooltip: 'Insert Heading 2',
-                  expandableBackground: Colors.red,
-                  onPressedButton: () {
-                    toolbar.action("## ", "");
-                    onActionCompleted?.call();
-                  },
-                ),
-                ToolbarItem(
-                  key: const ValueKey<String>("h3"),
-                  icon: "H3",
-                  tooltip: 'Insert Heading 3',
-                  expandableBackground: Colors.orange,
-                  onPressedButton: () {
-                    toolbar.action("### ", "");
-                    onActionCompleted?.call();
-                  },
-                ),
-                ToolbarItem(
-                  key: const ValueKey<String>("h4"),
-                  icon: "H4",
-                  tooltip: 'Insert Heading 4',
-                  expandableBackground: expandableBackground,
-                  onPressedButton: () {
-                    toolbar.action("#### ", "");
-                    onActionCompleted?.call();
-                  },
-                ),
-                // Heading 5 onwards has same font
-              ],
+              key: const ValueKey<String>("h2"),
+              icon: "H2",
+              tooltip: 'Insert Heading 2',
+              onPressedButton: () {
+                toolbar.action("## ", "");
+                onActionCompleted?.call();
+              },
             ),
-            // unorder list
+            ToolbarItem(
+              key: const ValueKey<String>("h3"),
+              icon: "H3",
+              tooltip: 'Insert Heading 3',
+              onPressedButton: () {
+                toolbar.action("### ", "");
+                onActionCompleted?.call();
+              },
+            ),
+            ToolbarItem(
+              key: const ValueKey<String>("h4"),
+              icon: "H4",
+              tooltip: 'Insert Heading 4',
+              onPressedButton: () {
+                toolbar.action("#### ", "");
+                onActionCompleted?.call();
+              },
+            ),
+            // unOrdered list
             ToolbarItem(
               key: const ValueKey<String>("toolbar_unorder_list_action"),
               icon: FontAwesomeIcons.listUl,
