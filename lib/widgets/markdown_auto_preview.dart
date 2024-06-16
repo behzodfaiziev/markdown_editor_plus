@@ -12,6 +12,7 @@ class MarkdownAutoPreview extends StatefulWidget {
     super.key,
     this.controller,
     this.focusNode,
+    this.markDownStyleSheet,
     this.scrollController,
     this.onChanged,
     this.style,
@@ -42,6 +43,8 @@ class MarkdownAutoPreview extends StatefulWidget {
 
   /// Hint text to show when the field is empty
   final String? hintText;
+
+  final MarkdownStyleSheet? markDownStyleSheet;
 
   /// For enable toolbar options
   ///
@@ -281,10 +284,12 @@ class _MarkdownAutoPreviewState extends State<MarkdownAutoPreview> {
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: MarkdownBody(
+
                     key: const ValueKey<String>("zmarkdown-parse-body"),
                     data: _internalController.text == ""
                         ? widget.hintText ?? "_Markdown text_"
                         : _internalController.text,
+                    styleSheet: widget.markDownStyleSheet,
                   ),
                 ),
               ),
